@@ -1,0 +1,89 @@
+{
+  "confusion_matrix": {
+    "TP": 40,
+    "FP": 0,
+    "FN": 0,
+    "TN": 30
+  },
+  "metrics": {
+    "precision": 100.0,
+    "recall": 100.0,
+    "f1_score": 100.0,
+    "accuracy": 100.0
+  },
+  "categories": {
+    "by_difficulty": {
+      "easy": {
+        "total": 14,
+        "killed": 14,
+        "survived": 0
+      },
+      "medium": {
+        "total": 17,
+        "killed": 17,
+        "survived": 0
+      },
+      "hard": {
+        "total": 9,
+        "killed": 9,
+        "survived": 0
+      }
+    },
+    "by_operator": {
+      "boundary_change": {
+        "total": 15,
+        "killed": 15,
+        "survived": 0
+      },
+      "condition_negation": {
+        "total": 8,
+        "killed": 8,
+        "survived": 0
+      },
+      "arithmetic_operator": {
+        "total": 8,
+        "killed": 8,
+        "survived": 0
+      },
+      "return_value": {
+        "total": 9,
+        "killed": 9,
+        "survived": 0
+      }
+    },
+    "by_module": {
+      "mathutil": {
+        "total": 7,
+        "killed": 7,
+        "survived": 0
+      },
+      "strutil": {
+        "total": 7,
+        "killed": 7,
+        "survived": 0
+      },
+      "dsutil": {
+        "total": 7,
+        "killed": 7,
+        "survived": 0
+      },
+      "validators": {
+        "total": 7,
+        "killed": 7,
+        "survived": 0
+      },
+      "humanize": {
+        "total": 6,
+        "killed": 6,
+        "survived": 0
+      },
+      "iterutils": {
+        "total": 6,
+        "killed": 6,
+        "survived": 0
+      }
+    }
+  },
+  "total_mutants": 40,
+  "total_clean_tests": 30
+}
