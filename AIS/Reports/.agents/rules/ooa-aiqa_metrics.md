@@ -1,7 +1,12 @@
+---
+trigger: always_on
+description: AI/ML 기능이 포함된 AI system에 특화된 8가지 품질속성 및 전통적인 소프트웨어 제품 품질 모델의 9가지 주 품질속성 및 세부 품질속성을 정의한다.
+---
+
 # AI 시스템 8대 품질 속성(Quality Attributes) 및 평가 지표(Metrics) 종합 가이드
 
 > **참조 강의자료**: `AIS / reference / 1-2 AI Engineering`  
-> **기반 표준**: ISO/IEC 25059 (AI System Quality Model), ISO/IEC 25010/25012, ISO/IEC 29100, NIST AI RMF, EU AI Act
+> **기반 표준**: ISO/IEC 25059 (AI System Quality Model), ISO/IEC 25010, ISO/IEC 29100, NIST AI RMF, EU AI Act
 
 ---
 
@@ -311,13 +316,3 @@
 | **설명 용이성** | **Understandability (이해성)**, **Credibility (신뢰성)** | 메타데이터 표준화, 피처 명명 규칙 준수 |
 
 ---
-
-## 5. 요약 체크리스트 (보고서 작성 시 지표 선정 가이드)
-
-과제계획서 및 설계서 작성 시, 아래의 표를 기준으로 시스템 특성에 맞는 3개 품질 속성을 선택하고 목표치(Target)를 정의할 수 있습니다.
-
-```markdown
-- [ ] 1. 기능 적합성/정확성: Task에 맞는 지표 선정 (예: RAG - Groundedness >= 0.90, Answer Relevance >= 0.85)
-- [ ] 2. 제2 품질 속성: 시스템 취약점 보완 지표 선정 (예: 강건성 - 노이즈/가혹조건 하 강건성 지수 RS >= 85%)
-- [ ] 3. 제3 품질 속성: 서비스 운영 제약 지표 선정 (예: 수행 효율성 - p95 Latency <= 500ms, 제어 가능성 - Fail-safe 성공률 100%)
-```

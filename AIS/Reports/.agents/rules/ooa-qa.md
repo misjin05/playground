@@ -1,7 +1,9 @@
 ---
-name: AIQuality_Attributes
-description: AI/ML 기능이 포함된 AI system에 특화된 8가지 품질속성을 정의한다.
+name: QA
+description: AI/ML 기능이 포함된 AI system에 특화된 8가지 품질속성 및 전통적인 소프트웨어 제품 품질 모델의 9가지 주 품질속성 및 세부 품질속성을 정의한다.
 ---
+
+## AI System Quality Attributes
 
 1. Functional Correctness (기능 정확성)
 2. Robustness (강건성)
@@ -14,11 +16,9 @@ description: AI/ML 기능이 포함된 AI system에 특화된 8가지 품질속�
 
 구체적인 정의는 ISO/IEC 25059:2023을 내용을 참고한다.
 
-==============================
----
-name: Quality_Attributes
-description: 전통적인 소프트웨어 제품 품질 모델의 9가지 주 품질속성 및 세부 품질속성을 정의한다.
----
+
+
+## Software Quality Attributes
 
 1. Functional Suitability (기능 적합성)
    - Functional Completeness (기능 완전성)
