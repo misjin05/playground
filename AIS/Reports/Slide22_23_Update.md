@@ -53,13 +53,13 @@ graph LR
 
 ```mermaid
 graph LR
-    R1["1. 사고 확인 (Detection)<br/>보안 Filter / 런타임 Hook / Step 검증"] --> R2["2. 즉시 대응 (Response)<br/>응답 중단 / 도구 차단 / 재수행 루프 [안]"]
+    R1["1. 사고 확인 (Detection)<br/>보안 Filter / 런타임 Hook / Step 검증"] --> R2["2. 즉시 대응 (Response)<br/>응답 중단 / 도구 차단 / 보강·재수행 루프"]
     R2 --> R3["3. 시정 및 재발 방지 (Correction)<br/>필터 보완 / 메모리 기반 자가 검증 루프 [안]"]
 ```
 
 | 주요 위험 시나리오 | 1) 사고 확인 (Detection) | 2) 즉시 대응 절차 (Response) | 3) 시정 및 재발방지 절차 (Correction) |
 | :--- | :--- | :--- | :--- |
 | **위험 A. 개인정보·기밀 입력 및<br/>보안 위배 프롬프트 유입** | • 사내 `LiteLLM` 연동 `App Serving 보안 Filter` 실시간 탐지 및 `Langfuse` 위반 로그 기록 | • 개인정보(비밀번호·토큰 등) 입력 즉시 차단, 공격/악성코드 요청 거부 및 위반 응답 중단 | • 신규 위반 패턴을 인프라 보안 필터 규칙 및 클라이언트 사내 가드레일 프롬프트(CON-02)에 업데이트 |
-| **위험 B. 불완전 YAML 정의로 인한<br/>Goal 미달성 위험** | • 런타임 훅(`beforeTool`)에서 `allowed_tools` 외 비인가 도구 호출 시도 실시간 감지<br/>• **`[안]`** 실행 중 **Step Self-Verification(자가 검증)** 실패 또는 세션 `dashboard.md` 리뷰를 통한 작업 미완수 확인 | • 비인가 도구 실행 **100% 차단** 및 허용된 도구 범위 내 **대안 제시**로 안전 유도(QAS-01)<br/>• **`[안]`** 검증 미통과 시 `diary.md` 피드백 기반 **재수행 루프(Retry Loop)** 가동 또는 미완수 기록 | • **`[안]` 세션 메모리(`diary.md`·`Mailbox`) 기반 의미론적 Self-Verification 루프**:<br/>  - 실행 중 기록된 **`diary.md`(도구 권한 상충으로 인한 미완수 내역)** 및 **`Mailbox`(권한·지시 상충 관련 `QUESTION` 기록)**를 바탕으로 Step 프롬프트와 `allowed_tools` 간 불일치(과다 허용·필수 도구 누락)를 자가 검증하여 **YAML의 도구 권한 조정 및 Step 분리를 보정·업데이트하는 루프 적용** |
+| **위험 B. 불완전 YAML 정의로 인한<br/>Goal 미달성 위험** | • 런타임 훅(`beforeTool`)에서 `allowed_tools` 외 비인가 도구 호출 시도 실시간 감지<br/>• 실행 중 **Step Verification(목표 커버리지 미달 등)** 또는 세션 `dashboard.md`를 통한 미완수 확인 | • 비인가 도구 실행 **100% 차단** 및 허용된 도구 범위 내 **대안 제시**로 안전 유도(QAS-01)<br/>• 검증 미달 시 **목표 달성 보강 루프 가동** *(예: Built-in `test` 에이전트의 `step-writer`가 커버리지 측정 후 목표 미달 시 테스트 보강 수행, QAS-02)* | • **`[안]` 세션 메모리(`diary.md`·`Mailbox`) 기반 의미론적 Self-Verification 루프**:<br/>  - 실행 중 기록된 **`diary.md`(도구 권한 상충으로 인한 미완수 내역)** 및 **`Mailbox`(권한·지시 상충 관련 `QUESTION` 기록)**를 바탕으로 Step 프롬프트와 `allowed_tools` 간 불일치(과다 허용·필수 도구 누락)를 자가 검증하여 **YAML의 도구 권한 조정 및 Step 분리를 보정·업데이트하는 루프 적용** |
 
 > `※ [안] 표기 항목: 향후 적용 가능성 검토 중`
