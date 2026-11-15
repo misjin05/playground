@@ -11,6 +11,21 @@
 | **EGM (Elephant-Goldfish)** | 스펙 작성 & 다각도 리뷰 게이트 | **Elephant**(긴 컨텍스트)가 초안을 쓰고, **Goldfish**(빈 컨텍스트 서브에이전트)가 모호함을 감사하여 **구현 준비 완료(`Blocker 0`)** 스펙 확정 |
 | **Ralph Loop** | 스펙 기반 자율 반복 구현 | 매 반복(Iteration)마다 **새로운 `agy` 세션(Fresh Context)**을 띄워 `PRD.md`에서 태스크 **1개만** 구현 → 테스트 통과 → `git commit` 후 종료 |
 
+### 커버하는 SW 개발 단계 (`Spec-to-Verified-Code`)
+
+단순 `코딩 → 테스트`가 아니라 **요구사항 구체화 · 설계 리뷰 게이트 · 구현 · 테스트 · 자가 수정**까지를 아우릅니다.
+
+1. **흐름도:**
+   ```text
+   [요구사항·설계] ──▶ [설계 리뷰 게이트] ──▶ [구현 ↔ 테스트 ↔ 수정] ──▶ [검증된 커밋]
+    EGM (Elephant)      EGM (Goldfish)           Ralph Loop              Git Main
+   ```
+2. **단계 요약:**
+   > **Design & Spec Review (EGM) → Autonomous Build & Test Loop (Ralph)**
+3. **역할 대비:**
+   * **EGM (Upstream):** *"올바른 것을 설계했는가?"* (Building the **right** thing)
+   * **Ralph (Downstream):** *"설계대로 통과할 때까지 만드는가?"* (Building the thing **right**)
+
 ---
 
 ## 2. Windows 환경 구성 방법
